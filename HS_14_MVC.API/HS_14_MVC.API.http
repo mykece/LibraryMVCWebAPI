@@ -1,0 +1,6 @@
+@HS_14_MVC.API_HostAddress = http://localhost:5206
+
+GET {{HS_14_MVC.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
