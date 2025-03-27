@@ -155,17 +155,6 @@ Update-Database
 
 ---
 
-## Configuring the Mail Service
-
-The project uses a mail service for sending emails through the `MailService` class. You need a **Gmail account** to send emails.
-
-### 1. Create a Gmail Account
-
-To use the mail service, you need a Gmail account. The project sends emails through this account. If you don't have a Gmail account, create one at [Google Account Creation](https://accounts.google.com/signup).
-
-### 2. Create an App Password in Gmail
-
-To securely send emails, you need to create an app password in your Gmail account.
 
 
 
