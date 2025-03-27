@@ -167,43 +167,6 @@ To use the mail service, you need a Gmail account. The project sends emails thro
 
 To securely send emails, you need to create an app password in your Gmail account.
 
-### 3. Configure the `MailService`
 
-The `MailService` class in the project works as follows. Make sure to fill in the following parameters correctly to send emails:
-
-```csharp
-public class MailService : IMailService
-{
-    public async Task SendMailAsync(SendMailDTO sendMailDTO)
-    {
-        try
-        {
-            var newMail = new MimeMessage();
-            newMail.From.Add(MailboxAddress.Parse("YOUR-EMAIL"));  // Sender email address
-            newMail.To.Add(MailboxAddress.Parse(sendMailDTO.Email));  // Recipient email address
-            newMail.Subject = sendMailDTO.Subject;  // Email subject
-            var builder = new BodyBuilder();
-            builder.HtmlBody = sendMailDTO.Message;  // Email message content
-            newMail.Body = builder.ToMessageBody();
-            
-            var smtp = new SmtpClient();
-            
-            // SMTP connection
-            await smtp.ConnectAsync("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-            
-            // Email account authentication
-            await smtp.AuthenticateAsync("YOUR-EMAIL", "YOUR-EMAIL-PASSWORD");  // Use your Gmail app password
-            
-            // Send the email
-            await smtp.SendAsync(newMail);
-            await smtp.DisconnectAsync(true);
-        }
-        catch (Exception ex)
-        {
-            throw new InvalidOperationException($"Error in sending email: {ex.Message}");
-        }
-    }
-}
-```
 
 ### Now you can run the project...
